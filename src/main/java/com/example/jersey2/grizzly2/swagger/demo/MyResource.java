@@ -22,6 +22,7 @@ public class MyResource {
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
+    @ApiOperation("A test operation")
     public String getIt() {
         return "Got it!";
     }
