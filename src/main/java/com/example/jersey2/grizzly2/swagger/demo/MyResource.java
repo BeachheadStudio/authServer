@@ -1,5 +1,6 @@
 package com.example.jersey2.grizzly2.swagger.demo;
 
+import com.wordnik.swagger.annotations.*;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -9,6 +10,8 @@ import javax.ws.rs.core.MediaType;
  * Root resource (exposed at "myresource" path)
  */
 @Path("myresource")
+@Api(value = "/myresource", description = "Example")
+@Produces({"text/plain"})
 public class MyResource {
 
     /**
