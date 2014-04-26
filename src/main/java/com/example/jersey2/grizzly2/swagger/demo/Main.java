@@ -4,6 +4,7 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import com.wordnik.swagger.jaxrs.config.*;
 import java.io.IOException;
 import java.net.URI;
 
@@ -22,7 +23,14 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in com.example.jersey2.grizzly2.swagger.demo package
-        final ResourceConfig rc = new ResourceConfig().packages("com.example.jersey2.grizzly2.swagger.demo");
+        String[] packages = {"com.example.jersey2.grizzly2.swagger.demo", "com.wordnik.swagger.jersey.listing"};
+
+        final ResourceConfig rc = new ResourceConfig().packages(packages);
+
+        BeanConfig config = new BeanConfig();
+        config.setResourcePackage("com.example.jersey2.grizzly2.swagger.demo");
+        config.setVersion("1.0.0");
+        config.setScan(true);
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI
