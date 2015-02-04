@@ -15,14 +15,18 @@ import javax.ws.rs.core.MediaType;
 public class MyResource {
 
     /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
+     * Method handling HTTP GET requests. The returned object will be sent to
+     * the client as "text/plain" media type.
      *
      * @return String that will be returned as a text/plain response.
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @ApiOperation("A test operation")
+    @ApiOperation(value = "A test operation", notes = "More notes about this method", response = MyResource.class)
+    @ApiResponses(value = {
+        @ApiResponse(code = 400, message = "Invalid ID supplied"),
+        @ApiResponse(code = 500, message = "Server is down!")
+    })
     public String getIt() {
         return "Got it!";
     }
