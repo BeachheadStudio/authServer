@@ -72,35 +72,35 @@
                     <mainClass>com.example.jersey2.grizzly2.swagger.demo.Main</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.github.kongchen</groupId>
-                <artifactId>swagger-maven-plugin</artifactId>
-                <version>2.0</version>
-                <configuration>
-                    <apiSources>
-                        <apiSource>
-                            <locations>com.example.jersey2.grizzly2.swagger.demo</locations>
-                            <apiVersion>v1</apiVersion>
-                            <basePath>http://localhost:8080</basePath>
-                            <outputTemplate>
-                                     https://raw.github.com/kongchen/api-doc-template/master/v2.0/html.mustache
-                            </outputTemplate>
-                            <outputPath>generated/strapdown.html</outputPath>
-                            <swaggerDirectory>generated/apidocs</swaggerDirectory>
-                            <!--useOutputFlatStructure>false</useOutputFlatStructure-->
-                            <!--mustacheFileRoot>${basedir}/src/main/resources/</mustacheFileRoot-->
-                        </apiSource>
-                    </apiSources>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>com.github.kongchen</groupId>-->
+                <!--<artifactId>swagger-maven-plugin</artifactId>-->
+                <!--<version>2.0</version>-->
+                <!--<configuration>-->
+                    <!--<apiSources>-->
+                        <!--<apiSource>-->
+                            <!--<locations>com.example.jersey2.grizzly2.swagger.demo</locations>-->
+                            <!--<apiVersion>v1</apiVersion>-->
+                            <!--<basePath>http://localhost:8080</basePath>-->
+                            <!--<outputTemplate>-->
+                                     <!--https://raw.github.com/kongchen/api-doc-template/master/v2.0/html.mustache-->
+                            <!--</outputTemplate>-->
+                            <!--<outputPath>generated/strapdown.html</outputPath>-->
+                            <!--<swaggerDirectory>generated/apidocs</swaggerDirectory>-->
+                            <!--&lt;!&ndash;useOutputFlatStructure>false</useOutputFlatStructure&ndash;&gt;-->
+                            <!--&lt;!&ndash;mustacheFileRoot>${basedir}/src/main/resources/</mustacheFileRoot&ndash;&gt;-->
+                        <!--</apiSource>-->
+                    <!--</apiSources>-->
+                <!--</configuration>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>compile</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <properties>

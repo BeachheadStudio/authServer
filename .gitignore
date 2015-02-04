@@ -3,3 +3,6 @@ pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.next
 release.properties
+.idea/
+generated/
+jersey2-grizzly2-swagger-demo.iml
