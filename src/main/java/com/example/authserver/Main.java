@@ -20,7 +20,7 @@ public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:8080/";
+    public static final String BASE_URI = "http://192.168.1.154:8080/";
 
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.

@@ -14,13 +14,13 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 
 /**
- * Created by kmiller on 4/1/16.
+ * Created by SingleMalt on 4/1/16.
  */
 public class AppleAuthService extends AuthService<AppleAuth> {
     private static final Logger logger = LogManager.getLogger(AppleAuthService.class);
 
     @Override
-    protected boolean isFirstPartyAuthed(AppleAuth auth) {
+    public boolean isFirstPartyAuthed(AppleAuth auth) {
         try {
             // validate request with apple
             // first, check the url
@@ -35,8 +35,8 @@ public class AppleAuthService extends AuthService<AppleAuth> {
             byteBuffer.order(ByteOrder.BIG_ENDIAN);
             byteBuffer.putLong(Long.parseLong(auth.timestamp));
 
-            byte[] bytePlayerID = auth.firstPartyPlayerID.getBytes("UTF-8");
-            byte[] bundleID = auth.bundleID.getBytes("UTF-8");
+            byte[] bytePlayerID = auth.playerId.getBytes("UTF-8");
+            byte[] bundleID = auth.bundleId.getBytes("UTF-8");
             byte[] timestamp = byteBuffer.array();
             byte[] salt = DatatypeConverter.parseBase64Binary(auth.salt);
             byte[] signature = DatatypeConverter.parseBase64Binary(auth.signature);

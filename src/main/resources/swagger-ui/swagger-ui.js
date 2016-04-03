@@ -1946,6 +1946,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         content = response.content.data;
         url = response.request.url;
       }
+      url = url.replace('/api-docs', '');
       headers = response.headers;
       contentType = headers && headers["Content-Type"] ? headers["Content-Type"].split(";")[0].trim() : null;
       if (!content) {

@@ -22,7 +22,6 @@ public class ExceptionLogger implements ExceptionMapper<Throwable> {
             return ((WebApplicationException)throwable).getResponse();
         } else {
             logger.error("Exception REST service call", throwable);
-            throwable.printStackTrace();
             return Response.status(500).build();
         }
     }

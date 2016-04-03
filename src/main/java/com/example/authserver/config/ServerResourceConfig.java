@@ -6,7 +6,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.ServerProperties;
 
 /**
- * Created by kmiller on 10/2/14.
+ * Created by SingleMalt on 10/2/14.
  */
 public class ServerResourceConfig extends ResourceConfig {
 

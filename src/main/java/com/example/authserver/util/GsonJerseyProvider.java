@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
 /**
- * Created by kmiller on 2/29/16.
+ * Created by SingleMalt on 2/29/16.
  */
 @Provider
 @Produces(MediaType.APPLICATION_JSON)

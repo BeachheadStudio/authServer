@@ -7,14 +7,12 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 
 /**
- * Created by kmiller on 4/1/16.
+ * Created by SingleMalt on 4/1/16.
  */
-abstract class AuthService<T extends Auth> {
-    protected final Gson gson = new Gson();
+public abstract class AuthService<T extends Auth> {
+    public abstract boolean isFirstPartyAuthed(T auth);
 
-    protected abstract boolean isFirstPartyAuthed(T auth);
-
-    public Auth detectAuthJson(String jsonInput) throws JsonParseException, IllegalArgumentException {
+    public static Auth detectAuthJson(String jsonInput) throws JsonParseException, IllegalArgumentException {
         Network network;
         JsonObject jObject = new JsonParser().parse(jsonInput).getAsJsonObject();
 
@@ -23,11 +21,11 @@ abstract class AuthService<T extends Auth> {
 
             switch (network) {
                 case APPLE:
-                    return gson.fromJson(jsonInput, AppleAuth.class);
+                    return new Gson().fromJson(jsonInput, AppleAuth.class);
                 case GOOGLE:
-                    return gson.fromJson(jsonInput, GoogleAuth.class);
+                    return new Gson().fromJson(jsonInput, GoogleAuth.class);
                 case AMAZON:
-                    return gson.fromJson(jsonInput, AmazonAuth.class);
+                    return new Gson().fromJson(jsonInput, AmazonAuth.class);
             }
         }
 
