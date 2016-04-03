@@ -1,7 +1,7 @@
 package com.example.authserver.model;
 
 /**
- * Created by kmiller on 4/1/16.
+ * Created by SingleMalt on 4/1/16.
  */
 public enum Network {
     APPLE,

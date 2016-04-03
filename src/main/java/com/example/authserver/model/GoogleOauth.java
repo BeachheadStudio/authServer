@@ -1,7 +1,7 @@
 package com.example.authserver.model;
 
 /**
- * Created by kmiller on 10/17/15.
+ * Created by SingleMalt on 10/17/15.
  */
 public class GoogleOauth {
     public String azp;

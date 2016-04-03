@@ -1,7 +1,7 @@
 package com.example.authserver.model;
 
 /**
- * Created by kmiller on 3/17/16.
+ * Created by SingleMalt on 3/17/16.
  */
 public class AmazonOauth {
     public String aud;
