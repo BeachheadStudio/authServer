@@ -1,9 +1,6 @@
 package com.example.authserver.route;
 
-import com.example.authserver.model.AmazonAuth;
-import com.example.authserver.model.AppleAuth;
-import com.example.authserver.model.Auth;
-import com.example.authserver.model.GoogleAuth;
+import com.example.authserver.model.*;
 import com.example.authserver.service.auth.AmazonAuthService;
 import com.example.authserver.service.auth.AppleAuthService;
 import com.example.authserver.service.auth.AuthService;
@@ -22,6 +19,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Path("auth")
@@ -38,7 +38,7 @@ public class AuthHandler {
         @ApiResponse(code = 400, message = "Invalid request"),
         @ApiResponse(code = 500, message = "Server is down")
     })
-    public Response authCheck(String data) {
+    public Response authCheck(String data) throws NoSuchAlgorithmException {
         logger.debug("Starting auth check");
         if(data == null || data.equals("")) {
             return Response.status(400).build();
@@ -69,8 +69,15 @@ public class AuthHandler {
             }
         }
 
-        return Response.ok()
-                .cookie(new NewCookie("session-token", UUID.randomUUID().toString()))
+        Player player = new Player();
+
+        player.id = UUID.randomUUID().toString();
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(player.id.getBytes(), 0, player.id.length());
+        player.token = String.format("%s", new BigInteger(1,md.digest()).toString(16));
+
+        return Response.ok(player)
+                .cookie(new NewCookie("session-token", player.token))
                 .build();
     }
 }
